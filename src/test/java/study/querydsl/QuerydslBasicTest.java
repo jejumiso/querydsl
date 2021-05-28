@@ -111,31 +111,31 @@ public class QuerydslBasicTest {
 //        em.persist(member_coin1);
     }
 
-    @Test
-    public void startQuerydsl(){
-
-         Member findMember = queryFactory
-                 .select(member)
-                 .from(member)
-                 .where(member.nickname.eq("member1"))
-                 .fetchOne();
-////
-//        assertThat(findMember.getNickname()).isEqualTo("member1");
-
-    }
-    @Test
-    public void startQuerydsl_team(){
-
-        Team findTeam = queryFactory
-                .select(team)
-                .from(team)
-                .where(team.teamname.eq("teamB"))
-                .fetchOne();
-        System.out.println("findTeam = " + findTeam);
-////
-//        assertThat(findMember.getNickname()).isEqualTo("member1");
-
-    }
+//    @Test
+//    public void startQuerydsl(){
+//
+//         Member findMember = queryFactory
+//                 .select(member)
+//                 .from(member)
+//                 .where(member.nickname.eq("member1"))
+//                 .fetchOne();
+//////
+////        assertThat(findMember.getNickname()).isEqualTo("member1");
+//
+//    }
+//    @Test
+//    public void startQuerydsl_team(){
+//
+//        Team findTeam = queryFactory
+//                .select(team)
+//                .from(team)
+//                .where(team.teamname.eq("teamB"))
+//                .fetchOne();
+//        System.out.println("findTeam = " + findTeam);
+//////
+////        assertThat(findMember.getNickname()).isEqualTo("member1");
+//
+//    }
 
 
     @Test
@@ -144,11 +144,11 @@ public class QuerydslBasicTest {
                 .select(new QMemberDto(member.nickname, member.age,member.bank))
                 .from(member)
                 .fetch();
-        
+
         for (MemberDto memberDto : result){
             System.out.println("memberDto.memberDto = " + memberDto);
         }
-        
+
     }
 
     @Test
@@ -176,8 +176,8 @@ public class QuerydslBasicTest {
         for (Member member : members){
             System.out.println("result.member = " + member.getNickname());
         }
-        
-        
+
+
 
     }
 

@@ -10,7 +10,6 @@ import javax.persistence.Id;
 @Entity
 @Getter @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@ToString(of = {"coin", "type", "comment" })
 public class Member_Bj {
 
     @Id

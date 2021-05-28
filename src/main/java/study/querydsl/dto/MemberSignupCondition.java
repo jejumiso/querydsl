@@ -6,5 +6,5 @@ import lombok.Data;
 public class MemberSignupCondition {
     private String nickname;
     private String password;
-    private Long teamid;
+    private String teamname;
 }

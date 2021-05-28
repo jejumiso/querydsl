@@ -13,6 +13,7 @@ public class MemberTeamDto {
     private String teamname;
     private String photo_title;
     private String photos;
+    private String error;
 
 
 
@@ -25,5 +26,17 @@ public class MemberTeamDto {
         this.teamname = teamname;
         this.photo_title = photo_title;
         this.photos = photos;
+    }
+
+    @QueryProjection
+    public MemberTeamDto(Long memberId, String nickname, int age, Long teamId, String teamname, String photo_title, String photos,String error) {
+        this.memberId = memberId;
+        this.nickname = nickname;
+        this.age = age;
+        this.teamId = teamId;
+        this.teamname = teamname;
+        this.photo_title = photo_title;
+        this.photos = photos;
+        this.error = error;
     }
 }

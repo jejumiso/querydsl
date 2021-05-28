@@ -134,6 +134,10 @@ public class Member {
         team.getMembers().add(this);
     }
 
+    public void changePhotos(String photos){
+        this.photos = photos;
+    }
+
 
 
     @ManyToOne(fetch = FetchType.LAZY)

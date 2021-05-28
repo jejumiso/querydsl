@@ -13,6 +13,7 @@ import study.querydsl.repository.MemberRepository;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequiredArgsConstructor
 public class MemberController {
@@ -29,6 +30,33 @@ public class MemberController {
 //
 //        return memberRepository.search(condition);
 //    }
+
+//    @GetMapping("/")
+//    public String home( ){
+//
+////        MemberSearchCondition condition = new MemberSearchCondition();
+////        condition.setNickname("memberA");
+////        PageRequest pageRequest = PageRequest.of(0,3);
+////
+////        Page<MemberTeamDto> result = memberRepository.searchPageSimple(condition, pageRequest);
+//
+//
+//        return "home";
+//    }
+
+    @GetMapping("/v2/members11")
+    public String searchMemberV3( ){
+
+//        MemberSearchCondition condition = new MemberSearchCondition();
+//        condition.setNickname("memberA");
+//        PageRequest pageRequest = PageRequest.of(0,3);
+//
+//        Page<MemberTeamDto> result = memberRepository.searchPageSimple(condition, pageRequest);
+
+        String asdfasdf = "asdfasdf";
+
+        return asdfasdf;
+    }
 
     @GetMapping("/v2/members")
     public Page<MemberTeamDto> searchMemberV2(MemberSearchCondition condition, Pageable pageable ){

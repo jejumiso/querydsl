@@ -8,6 +8,7 @@ public class MemberDto {
     private String nickname;
     private int age;
     private String bank;
+//    private String error;
 
     @QueryProjection
     public MemberDto(String nickname, int age){
@@ -23,5 +24,14 @@ public class MemberDto {
         this.bank = bank;
 
     }
+
+//    @QueryProjection
+//    public MemberDto(String nickname, int age,String bank, String error){
+//        this.nickname = nickname;
+//        this.age = age;
+//        this.bank = bank;
+//        this.error = error;
+//
+//    }
 
 }

@@ -120,14 +120,31 @@ public class MemberRepositoryImpl implements MemberRepositoryCustom{
 
 //        Team findTeam = teamRepository.findById(condition.getTeamid()).get();
 
-        List<Team> findTeams = teamRepository.findByteamname("teamA");
-        Team findTeam = findTeams.stream().findFirst().get();
+        List<Team> findTeams = teamRepository.findByteamname(condition.getTeamname());
+        if(findTeams.stream().count() == 0){
+            Team newteam = new Team(condition.getTeamname());
+            Team savedteam = teamRepository.save(newteam);
 
-        Member newMember = new Member(condition.getNickname(), condition.getNickname(), condition.getPassword(), 20, "", "", findTeam);
+            Member newMember = new Member(condition.getNickname(), condition.getNickname(), condition.getPassword(), 20, "", "", savedteam);
+            Member savedMember = memberRepository.save(newMember);
+            return new MemberTeamDto(savedMember.getId(), savedMember.getNickname(), 20, 5L, "", "", "","프로젝트에 팀 설정이 안되어 있나요?");
+        }
+        else {
+            Team findTeam = findTeams.stream().findFirst().get();
+            Optional<Member> findMember = memberRepository.findBynickname(condition.getNickname()).stream().findFirst();
+            if(findMember.isPresent()){
+                return new MemberTeamDto(-1L, "", 20, 5L, "", "", "",condition.getNickname() + "은 중복된 닉네임입니다. 비번을 잃어버렸을 경우 관리자에게 연라주세요.");
+            }
+            else{
+                Member newMember = new Member(condition.getNickname(), condition.getNickname(), condition.getPassword(), 20, "", "", findTeam);
+                Member savedMember = memberRepository.save(newMember);
+                return new MemberTeamDto(savedMember.getId(), savedMember.getNickname(), 20, 5L, "", "", "");
 
-        Member savedMember = memberRepository.save(newMember);
+            }
 
-        return new MemberTeamDto(savedMember.getId(), savedMember.getNickname(), 20, 5L, "", "", "");
+
+        }
+
     }
 
     @Override
